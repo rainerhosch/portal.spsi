@@ -60,9 +60,10 @@ $autoload['packages'] = array();
 */
 $autoload['libraries'] = [
     'database',
+    'form_validation',
     'session',
     'formattanggal',
-    'formattanggal2'
+    'formattanggal2',
 ];
 
 /*
@@ -97,6 +98,7 @@ $autoload['drivers'] = array();
 $autoload['helper'] = [
     'url',
     'file',
+    'language',
     'auth'
 ];
 
