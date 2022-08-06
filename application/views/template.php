@@ -59,6 +59,23 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            $(document).ready(function() {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('admin') ?>/kelola_anggota/get_data",
+                    data: {
+                        id: <?= $this->session->userdata('user_id') ?>
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        // console.log(response)
+                        $("#profile_img").attr(`src`, `<?= base_url('assets') ?>/img/${response.data.user_img}`);
+                    }
+                });
+            });
+        </script>
     <?php else : ?>
 
         <body class="bg-gradient-primary">

@@ -42,9 +42,6 @@ function save_data_session($data)
     $CI = &get_instance();
     $CI->load->model('M_users', 'users');
     $data_groups = $CI->users->get_users_groups(['users_groups.user_id' => $data['id']])->row_array();
-    // return $data_groups;
-    // $CI->load->model('Auth_model', 'auth_model');
-
     $data_session = [
         'user_id' => $data['id'],
         'username' => $data['username'],
@@ -85,7 +82,7 @@ function check_login_attempts($data)
 {
     $CI = &get_instance();
     $CI->load->model('Auth_model', 'auth_model');
-    $data_attempts = $CI->auth_model->get_login_attempts(['login' => $data])->num_rows();
+    $data_attempts = $CI->auth_model->get_login_attempts(['login' => $data])->result_array();
     return $data_attempts;
 }
 

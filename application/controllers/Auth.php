@@ -27,14 +27,44 @@ class Auth extends CI_Controller
             $data['login_attempts'] = [
                 'ip_address' => get_client_ip(),
                 'login' => $data_user['email'],
-                'time' => strtotime(date("H:i:s"))
+                'time' => strtotime(date("Y-m-d H:i:s"))
             ];
             if ($data_user != null) {
                 if ($data_user['active'] === '1') {
                     $login_attempts = check_login_attempts($data_user['email']);
-                    if ($login_attempts >= 3) {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Melebihi batas percobaan login, silahkan tunggu beberapa saat.</div>');
-                        redirect('auth/login', 'refresh');
+                    $jml_attempts = count($login_attempts);
+                    if ($jml_attempts >= 3) {
+                        $last_attempts_time = $login_attempts[1]['time'];
+                        // $time_now = strtotime("2022-08-05 10:50:01");
+                        // var_dump($time_now);
+                        // die;
+                        $time_now = strtotime(date("Y-m-d H:i:s"));
+                        $seconds   = $time_now - $last_attempts_time;
+                        $months = floor($seconds / (3600 * 24 * 30));
+                        $day = floor($seconds / (3600 * 24));
+                        $hours = floor($seconds / 3600);
+                        $mins = floor(($seconds - ($hours * 3600)) / 60);
+                        $secs = floor($seconds % 60);
+                        // var_dump(date("Y-m-d H:i:s", $last_attempts_time));
+                        // echo '<br>';
+                        // var_dump($day);
+                        // echo '<br>';
+                        // var_dump($hours);
+                        // echo '<br>';
+                        // var_dump($mins);
+                        // die;
+                        if ($day > 0 || $hours > 0 || $mins > 30) {
+                            if ($data_user['password'] == md5($data_post['password'])) {
+                                if ($login_attempts > 0) {
+                                    remove_data_login_attempts($data_user['email']);
+                                }
+                                save_data_session($data_user);
+                                redirect('dashboard', 'refresh');
+                            }
+                        } else {
+                            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Melebihi batas percobaan login, silahkan tunggu beberapa saat.</div>');
+                            redirect('auth/login', 'refresh');
+                        }
                     } else {
                         if ($data_user['password'] == md5($data_post['password'])) {
                             if ($login_attempts > 0) {
@@ -105,6 +135,7 @@ class Auth extends CI_Controller
                 'last_name' => $data_post['last_name'],
                 'company' => $data_post['company'],
                 'phone' => $data_post['phone'],
+                'user_img' => 'default_profile.svg'
             ];
             $isert_user = $this->users->add_data_anggota($data_insert);
             if ($isert_user) {

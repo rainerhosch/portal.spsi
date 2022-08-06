@@ -11,12 +11,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class M_Users extends CI_Model
 {
-    public function get_data($condition = null)
+    public function get_data($condition = null, $search = null)
     {
         $this->db->select('*');
         $this->db->from('users');
         if ($condition != null) {
             $this->db->where($condition);
+        }
+
+        if ($search != null) {
+            $this->db->like('first_name', $search, 'after');
         }
         $this->db->order_by('id', 'DESC');
         return $this->db->get();

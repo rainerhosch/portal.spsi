@@ -35,7 +35,11 @@ class Kelola_Anggota extends CI_Controller
     {
         if ($this->input->is_ajax_request()) {
             $data_post = $this->input->post();
-            $resData = $this->users->get_data()->result_array();
+            if (isset($data_post['id'])) {
+                $resData = $this->users->get_data(['id' => $data_post['id']])->row_array();
+            } else {
+                $resData = $this->users->get_data()->result_array();
+            }
             if (!$resData) {
                 $data = [
                     'status' => false,

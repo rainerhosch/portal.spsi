@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="tbl_data_anggota" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="tbl_data_pengunduran" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -20,7 +20,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody id="tbody_data_anggota">
+                    <tbody id="tbody_data_pengunduran">
                     </tbody>
                 </table>
             </div>
@@ -30,3 +30,8 @@
 <script src="<?= base_url('assets') ?>/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets') ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('assets') ?>/vendor/sweetalert2/sweetalert2.all.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tbl_data_pengunduran').DataTable();
+    });
+</script>

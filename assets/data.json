@@ -1,0 +1,61 @@
+[{
+  "id": "643",
+  "text": "KEPALA DINAS",
+  "title": "AAA",
+  "width": "350",
+  "height": "100",
+  "dir": "horizontal",
+  "img": "user.jpg"
+}, {
+  "id": "656",
+  "text": "KEPALA BAGIAN A",
+  "title": "BBB",
+  "width": "350",
+  "height": "100",
+  "dir": "vertical",
+  "img": "user.jpg"
+}, {
+  "id": "679",
+  "text": "KEPALA BAGIAN B",
+  "title": "CCC",
+  "width": "350",
+  "height": "100",
+  "dir": "vertical",
+  "img": "user.jpg"
+}, {
+  "id": "715",
+  "text": "KEPALA BAGIAN C",
+  "title": "DDD",
+  "width": "350",
+  "height": "100",
+  "dir": "vertical",
+  "img": "user.jpg"
+}, {
+  "id": "1477",
+  "text": "KEPALA BAGIAN D",
+  "title": "EEE",
+  "width": "350",
+  "height": "100",
+  "dir": "vertical",
+  "img": "user.jpg"
+}, {
+  "id": "643-656",
+  "from": "643",
+  "to": "656",
+  "type": "line"
+}, {
+  "id": "643-679",
+  "from": "643",
+  "to": "679",
+  "type": "line"
+}, {
+  "id": "643-715",
+  "from": "643",
+  "to": "715",
+  "type": "line"
+}, {
+  "id": "643-1477",
+  "from": "643",
+  "to": "1477",
+  "type": "line"
+}]
