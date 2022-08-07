@@ -439,21 +439,21 @@
                         }
                     });
                 });
-                $('table').DataTable({
-                    // scrollY: "200px",
-                    scrollX: true,
-                    scrollCollapse: true,
-                    searching: false,
-                    fixedColumns: {
-                        heightMatch: 'none'
-                    },
-                    "aLengthMenu": [
-                        [5, 10, 20, -1],
-                        [5, 10, 20, "All"]
-                    ],
-                    "iDisplayLength": 5
-                });
             }
+        });
+        $('#tbl_data_struktur,#tbl_data_jabatan').DataTable({
+            // scrollY: "200px",
+            scrollX: true,
+            scrollCollapse: true,
+            searching: false,
+            fixedColumns: {
+                heightMatch: 'none'
+            },
+            "aLengthMenu": [
+                [5, 10, 20, -1],
+                [5, 10, 20, "All"]
+            ],
+            "iDisplayLength": 5
         });
     });
 </script>

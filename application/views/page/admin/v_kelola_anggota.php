@@ -4,13 +4,14 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $subpage ?></h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 class="m-0 font-weight-bold text-primary">Tabel Data</h6>
-                </div>
-                <div class="col-md-6">
-                    <a class="btn btn-sm btn-info float-right btnAddAnggota">Add Anggota</a>
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Data</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item btnAddAnggota" href="#" id="btnAddAnggota">Tambah Data</a>
                 </div>
             </div>
         </div>
