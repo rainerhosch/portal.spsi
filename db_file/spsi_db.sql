@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Agu 2022 pada 11.36
+-- Waktu pembuatan: 08 Agu 2022 pada 12.25
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -123,7 +123,8 @@ CREATE TABLE `tbl_berita` (
 
 INSERT INTO `tbl_berita` (`id`, `tgl_post`, `judul`, `isi`, `gambar`, `pembuat`) VALUES
 (24, '2022-08-08', 'Demo Buruh Longmarch Bandung – Jakarta, Tuntut Penghapusan Omnibus Law', '<h1><span style=\"font-family:Comic Sans MS,cursive\"><em><strong>Demo Buruh Longmarch Bandung &ndash; Jakarta, Tuntut Penghapusan Omnibus Law</strong></em></span></h1>\r\n\r\n<p>Ratusan massa buruh menggelar longmarch Bandung &ndash; Jakarta. Sekitar 200 peserta aksi berangkat dari Gedung Sate Bandung, Jawa Barat. Rencananya mereka akan berjalan kaki selama 5 hari hingga tiba di Gedung DPR RI Jakarta pada 10/8/2022.<br />\r\n<br />\r\nNantinya mereka akan menggelar demo di DPR RI menuntut penghapusan Omnibus Law. Peserta aksi akan melewati jalur Kab. Bandung Barat, Purwakarta, Karawang, Bekasi, hingga Jakarta. Diperkirakan peserta aksi akan terus bertambah di setiap kota.<br />\r\n&nbsp;</p>\r\n', 'test.jpg', 1),
-(25, '2022-08-08', 'Aksi Unjuk Rasa Buruh Tuntut Ratifikasi Konvensi ILO', '<p><img alt=\"\" src=\"https://pict.sindonews.net/webp/1280/salsabila/photo/2022/06/21/1/30539/G-aksi-unjuk-rasa-buruh-tuntut-ratifikasi-konvensi-ilo-tyb.webp\" style=\"height:333px; width:500px\" /></p>\r\n\r\n<p>Sejumlah buruh perwakilan dari beberapa organisasi pekerja berunjuk rasa di depan Kantor kementerian Tenaga Kerja (Kemenaker), Jakarta, Selasa (210/6/2022).</p>\r\n\r\n<p>Mereka meminta pemerintah untuk dapat segera meratifikasi konvensi Organisasi Perburuhan Internasional (ILO) Nomor 190 tahun 2019 tentang Penghapusan Kekerasan dan Pelecehan di Dunia Kerja. ANTARA FOTO/Aditya Pradana Putra/tom.</p>\r\n', 'test.jpg', 1);
+(25, '2022-08-08', 'Aksi Unjuk Rasa Buruh Tuntut Ratifikasi Konvensi ILO', '<p><img alt=\"\" src=\"https://pict.sindonews.net/webp/1280/salsabila/photo/2022/06/21/1/30539/G-aksi-unjuk-rasa-buruh-tuntut-ratifikasi-konvensi-ilo-tyb.webp\" style=\"height:333px; width:500px\" /></p>\r\n\r\n<p>Sejumlah buruh perwakilan dari beberapa organisasi pekerja berunjuk rasa di depan Kantor kementerian Tenaga Kerja (Kemenaker), Jakarta, Selasa (210/6/2022).</p>\r\n\r\n<p>Mereka meminta pemerintah untuk dapat segera meratifikasi konvensi Organisasi Perburuhan Internasional (ILO) Nomor 190 tahun 2019 tentang Penghapusan Kekerasan dan Pelecehan di Dunia Kerja. ANTARA FOTO/Aditya Pradana Putra/tom.</p>\r\n', 'test.jpg', 1),
+(26, '2022-08-08', 'Test Post Informasi', '<p style=\"text-align:justify\"><img alt=\"\" src=\"https://akcdn.detik.net.id/visual/2021/12/01/demo-buruh-di-jawa-tengah_169.jpeg?w=650\" />Jakarta, CNN Indonesia -- Ratusan ribu hingga jutaan&nbsp;buruh bakal melakukan sederet aksi unjuk rasa mulai 6 hingga 10 Desember 2021. Aksi unjuk rasa ini buntut sikap pemerintah yang tidak mematuhi putusan Mahkamah Konstitusi (MK) terkait Undang-undang&nbsp;Cipta Kerja inkonstitusional bersyarat.<br />\r\nPresiden Konfederasi Serikat Pekerja Indonesia (KSPI), Said Iqbal mengatakan aksi unjuk rasa itu bakal digelar serentak di sejumlah daerah. Namun, pada 7 Desember, aksi skala nasional akan dipusatkan di Jakarta.<br />\r\n<br />\r\n&quot;Aksi unjuk rasa nasional dipusatkan di Istana, gedung MK, dan Balai Kota DKI Jakarta, akan dilakukan 7 desember 2021 di Istana, gedung MK, dan gedung Balai Kota DKI. aksi ini melibatkan 50 ribu-100 ribu buruh dari Jabodetabek yang berasal dari 60 federasi serikat pekerja tingkat nasional,&quot; kata Said dalam konferensi pers secara virtual, Jumat (3/12).<br />\r\n<br />\r\nBaca artikel CNN Indonesia &quot;Respons Putusan MK, Ratusan Ribu Buruh Bakal Geruduk Istana 7 Desember&quot; selengkapnya di sini:&nbsp;<a href=\"https://www.cnnindonesia.com/nasional/20211204001206-20-729745/respons-putusan-mk-ratusan-ribu-buruh-bakal-geruduk-istana-7-desember\">https://www.cnnindonesia.com/nasional/20211204001206-20-729745/respons-putusan-mk-ratusan-ribu-buruh-bakal-geruduk-istana-7-desember</a>.<br />\r\n<br />\r\nDownload Apps CNN Indonesia sekarang https://app.cnnindonesia.com/</p>\r\n', 'test.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -339,7 +340,7 @@ ALTER TABLE `struktur_org`
 -- AUTO_INCREMENT untuk tabel `tbl_berita`
 --
 ALTER TABLE `tbl_berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kegiatan`
