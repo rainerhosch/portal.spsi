@@ -79,7 +79,7 @@ class Auth extends CI_Controller
                         }
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-warning text-center"><p>Akun belum aktif, silahkan hubungi Admin.</p></div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-warning text-center"><p>Akun tidak aktif, silahkan hubungi Admin.</p></div>');
                     redirect('auth/login', 'refresh');
                 }
             } else {
@@ -133,7 +133,7 @@ class Auth extends CI_Controller
                 'active' => $active,
                 'first_name' => $data_post['first_name'],
                 'last_name' => $data_post['last_name'],
-                'company' => $data_post['company'],
+                'departemen' => $data_post['departemen'],
                 'phone' => $data_post['phone'],
                 'user_img' => 'default_profile.svg'
             ];

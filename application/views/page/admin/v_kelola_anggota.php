@@ -22,8 +22,8 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Company</th>
+                            <th>No Tlp</th>
+                            <th>Departemen</th>
                             <th>Status Aktif</th>
                             <th></th>
                         </tr>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="inputCompany" name="company" placeholder="Company Name" required>
+                        <input type="text" class="form-control form-control-user" id="inputCompany" name="departemen" placeholder="Departemen" required>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control form-control-user" id="inputEmail" name="email" placeholder="Email Address" required>
@@ -63,9 +63,6 @@
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user" id="inputPhone" name="phone" placeholder="Phone Number" required>
                     </div>
-                    <!-- <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="inputUsername" name="" placeholder="Username" required>
-                        </div> -->
                     <div class="form-group row">
                         <div class="col-sm-12 mb-3 mb-sm-0">
                             <input type="text" class="form-control form-control-user" id="viewPassword" name="view_password" placeholder="password123" disabled>
@@ -130,7 +127,7 @@
                         html += `<td>${user.first_name} ${user.last_name}</td>`;
                         html += `<td>${user.email}</td>`;
                         html += `<td>${user.phone}</td>`;
-                        html += `<td>${user.company}</td>`;
+                        html += `<td>${user.departemen}</td>`;
                         if (user.active === '1') {
                             html += `<td class="text-center"><a class="btn btn-sm btn-info btnIsActive" data-id="${user.id}" data-active="${user.active}"><i class="fa fa-unlock-alt"></i></a></td>`;
                         } else {

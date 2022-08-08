@@ -54,22 +54,22 @@
         </li>
     <?php else : ?>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url('members') ?>/lihat_kegiatan">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Lihat Kegiatan</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url('members') ?>/lihat_informasi">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Lihat Informasi Terkini</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url('members') ?>/lihat_struktur_organisasi">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Lihat Struktur SPSI</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url('members') ?>/pengunduran_diri">
                 <i class="fas fa-fw fa-user"></i>
                 <span>Pengunduran Anggota</span></a>
         </li>

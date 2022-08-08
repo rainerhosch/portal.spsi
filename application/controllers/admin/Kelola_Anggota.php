@@ -38,7 +38,7 @@ class Kelola_Anggota extends CI_Controller
             if (isset($data_post['id'])) {
                 $resData = $this->users->get_data(['id' => $data_post['id']])->row_array();
             } else {
-                $resData = $this->users->get_data()->result_array();
+                $resData = $this->users->get_data(['active !=' => 2])->result_array();
             }
             if (!$resData) {
                 $data = [

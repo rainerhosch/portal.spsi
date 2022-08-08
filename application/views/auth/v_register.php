@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="inputCompany" name="company" placeholder="Company Name" required>
+                            <input type="text" class="form-control form-control-user" id="inputCompany" name="departemen" placeholder="Departemen/Divisi" required>
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control form-control-user" id="inputEmail" name="email" placeholder="Email Address" required>
