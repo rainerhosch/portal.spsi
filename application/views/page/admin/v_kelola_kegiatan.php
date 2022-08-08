@@ -242,7 +242,7 @@
                         console.log(data_form)
                         $.ajax({
                             type: "POST",
-                            url: "<?= base_url('admin') ?>/kelola_kegiatan/edit_data_kegiatan",
+                            url: "<?= base_url('admin') ?>/kelola_kegiatan/update_data_kegiatan",
                             data: data_form,
                             dataType: "json",
                             success: function(response) {

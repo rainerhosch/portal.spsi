@@ -67,7 +67,7 @@ class Kelola_Kegiatan extends CI_Controller
         }
     }
 
-    public function edit_data_kegiatan()
+    public function update_data_kegiatan()
     {
         if ($this->input->is_ajax_request()) {
             $data_post = $this->input->post();
@@ -78,14 +78,13 @@ class Kelola_Kegiatan extends CI_Controller
                 'desc' => $data_post['editDesc'],
                 'lokasi' => $data_post['editLokasi']
             ];
-            $table = 'struktur_org';
-            $isert = $this->kegiatan->insert_data($data_update);
-            if ($isert) {
+            $update = $this->kegiatan->update_data($data_update, ['id' => $id_update]);
+            if ($update) {
                 $data = [
                     'status' => true,
                     'code' => 200,
                     'icon' => 'success',
-                    'message' => 'Success add data',
+                    'message' => 'Success update data.',
                     'data' => null
                 ];
             } else {
@@ -93,7 +92,7 @@ class Kelola_Kegiatan extends CI_Controller
                     'status' => false,
                     'code' => 500,
                     'icon' => 'error',
-                    'message' => 'Gagal insert data.',
+                    'message' => 'Gagal update data.',
                     'data' => null
                 ];
             }
