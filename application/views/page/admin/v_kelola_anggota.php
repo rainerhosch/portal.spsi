@@ -1,4 +1,50 @@
 <!-- Begin Page Content -->
+<style>
+    @media screen and (max-width: 767px) {
+
+        div.dataTables_wrapper div.dataTables_length,
+        div.dataTables_wrapper div.dataTables_filter,
+        div.dataTables_wrapper div.dataTables_info,
+        div.dataTables_wrapper div.dataTables_paginate {
+            text-align: right;
+        }
+    }
+
+    @media screen and (min-width: 520px) {
+        .container-fluid {
+            font-size: 11px;
+        }
+
+        th,
+        td {
+            white-space: nowrap;
+        }
+
+        div.dataTables_wrapper {
+            margin: 0 auto;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            font-size: 8px;
+        }
+
+        div.dataTables_wrapper div.dataTables_filter {
+            font-size: 8px;
+            text-align: right;
+        }
+
+        tr {
+            height: -50px;
+        }
+
+        .table td,
+        .table th {
+            padding: 0.50rem;
+            vertical-align: top;
+            border-top: 1px solid #e3e6f0;
+        }
+    }
+</style>
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subpage ?></h1>
@@ -133,16 +179,25 @@
                         html += `<td>${user.email}</td>`;
                         html += `<td>${user.phone}</td>`;
                         html += `<td>${user.departemen}</td>`;
-                        if (user.active === '1') {
-                            html += `<td class="text-center"><a class="btn btn-sm btn-info btnIsActive" data-id="${user.id}" data-active="${user.active}"><i class="fa fa-unlock-alt"></i></a></td>`;
+                        if (user.id != '1') {
+                            if (user.active === '1') {
+                                html += `<td class="text-center"><a class="btn btn-sm btn-info btnIsActive" data-id="${user.id}" data-active="${user.active}"><i class="fa fa-unlock-alt"></i></a></td>`;
+                            } else {
+                                html += `<td class="text-center"><a class="btn btn-sm btn-warning btnIsActive" data-id="${user.id}" data-active="${user.active}"><i class="fa fa-lock"></i></a></td>`;
+                            }
+                            html += `<td class="text-center">`;
+                            html += `<a class="btn btn-sm btn-warning btnResetPassword" data-id="${user.id}">Reset <i class="fas fa-key"></i></a>`;
+                            html += ` | `;
+                            html += `<a class="btn btn-sm btn-danger btnDelete" data-id="${user.id}"><i class="fas fa-trash"></i></a>`;
+                            html += `</td>`;
                         } else {
-                            html += `<td class="text-center"><a class="btn btn-sm btn-warning btnIsActive" data-id="${user.id}" data-active="${user.active}"><i class="fa fa-lock"></i></a></td>`;
+                            html += `<td class="text-center">`;
+                            html += `<i>Not Edited</i>`;
+                            html += `</td>`;
+                            html += `<td class="text-center">`;
+                            html += `<i>Not Edited</i>`;
+                            html += `</td>`;
                         }
-                        html += `<td class="text-center">`;
-                        // html += `<a class="btn btn-sm btn-success btnEdit" data-id="${user.id}"><i class="fas fa-pen"></i></a>`;
-                        // html += ` | `;
-                        html += `<a class="btn btn-sm btn-danger btnDelete" data-id="${user.id}"><i class="fas fa-trash"></i></a>`;
-                        html += `</td>`;
                         html += `</tr>`;
                     });
                 } else {
@@ -150,9 +205,39 @@
                 }
                 $('#tbody_data_anggota').html(html)
                 $('#tbl_data_anggota').DataTable();
-                $('.btnEdit').on('click', function() {
+                $('.btnResetPassword').on('click', function() {
                     let data_id = $(this).data('id');
-                    console.log('Edit ' + data_id)
+                    console.log('Edit ' + data_id);
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Reset password?',
+                        html: '<mark>password = user1234</mark>',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: "POST",
+                                url: "<?= base_url('auth') ?>/reset_password",
+                                data: {
+                                    id: data_id
+                                },
+                                dataType: "json",
+                                success: function(response) {
+                                    // console.log(response)
+                                    Swal.fire({
+                                        icon: response.icon,
+                                        title: response.message,
+                                        showConfirmButton: false,
+                                        timer: 5000
+                                    });
+                                    setTimeout(function() {
+                                        location.reload();
+                                    }, 1000);
+                                }
+                            });
+                        }
+                    });
                 });
 
                 $('.btnIsActive').on('click', function() {

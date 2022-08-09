@@ -59,9 +59,100 @@
                 </div>
             </div>
         </div>
-
         <script>
             $(document).ready(function() {
+                $('.modal').on('hidden.bs.modal', function(e) {
+                    location.reload(); // then reload the page.(3)
+                });
+                $('inputPassword, #inputRepeatPassword').on('keyup', function() {
+                    $('.progress').prop('hidden', false);
+                    var m = $(this).val();
+                    var n = m.length;
+                    // Function for checking
+                    check(n, m);
+                    let pwd = $('#inputPassword').val();
+                    let pwd2 = $(this).val();
+                    if ($('#inputPassword').val() == $('#inputRepeatPassword').val()) {
+                        $('#pwd_repeat_message').html('<i>password matching</i>').css('color', 'green');
+                        $('.btn_simpan').prop('disabled', false);
+                    } else {
+                        $('#pwd_repeat_message').html('<i>password not matching</i>').css('color', 'red');
+                        $('.btn_simpan').prop('disabled', true);
+                    }
+                    setTimeout(function() {
+                        $('#pwd_repeat_message').html('');
+                    }, 2000);
+                });
+
+                $('.btnEditPassword').click(function() {
+                    $('#modalEditPassword').modal('show');
+                    $('#form_edit_password').submit(function(e) {
+                        e.preventDefault();
+                        let data_form = $(this).serializeArray();
+                        console.log(data_form)
+                        $.ajax({
+                            type: "POST",
+                            url: "<?= base_url('members') ?>/update_password",
+                            data: data_form,
+                            dataType: "json",
+                            success: function(response) {
+                                // console.log(response)
+                                Swal.fire({
+                                    icon: response.icon,
+                                    title: response.message,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });
+                                setTimeout(function() { // wait for 5 secs(2)
+                                    location.reload(); // then reload the page.(3)
+                                }, 1000);
+                            }
+                        });
+                    });
+                });
+                $('.btnEditProfile').click(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('admin') ?>/kelola_anggota/get_data",
+                        data: {
+                            id: <?= $this->session->userdata('user_id') ?>
+                        },
+                        dataType: "json",
+                        success: function(response) {
+                            // console.log(response);
+                            let user = response.data;
+                            $('#editId').val(user.id);
+                            $('#editFirstName').val(user.first_name);
+                            $('#editLastName').val(user.last_name);
+                            $('#editEmail').val(user.email);
+                            $('#editPhone').val(user.phone);
+                        }
+                    });
+                    $('#modalEditProfile').modal('show');
+                    $('#form_edit_profile').submit(function(e) {
+                        e.preventDefault();
+                        let data_form = $(this).serializeArray();
+                        console.log(data_form)
+                        $.ajax({
+                            type: "POST",
+                            url: "<?= base_url('members') ?>/update_profile",
+                            data: data_form,
+                            dataType: "json",
+                            success: function(response) {
+                                // console.log(response)
+                                Swal.fire({
+                                    icon: response.icon,
+                                    title: response.message,
+                                    showConfirmButton: false,
+                                    timer: 5000
+                                });
+                                setTimeout(function() { // wait for 5 secs(2)
+                                    location.reload(); // then reload the page.(3)
+                                }, 1000);
+                            }
+                        });
+                    });
+                })
                 $.ajax({
                     type: "POST",
                     url: "<?= base_url('admin') ?>/kelola_anggota/get_data",

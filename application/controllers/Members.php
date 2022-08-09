@@ -80,4 +80,72 @@ class Members extends CI_Controller
         $data['content'] = 'page/members/v_lihat_struktur_organisasi.php';
         $this->load->view('template', $data);
     }
+
+    public function update_profile()
+    {
+        if ($this->input->is_ajax_request()) {
+            $data_post = $this->input->post();
+            $data_update = [
+                'ip_address' => get_client_ip(),
+                'username' => $data_post['first_name'],
+                'email' => $data_post['email'],
+                'first_name' => $data_post['first_name'],
+                'last_name' => $data_post['last_name'],
+                'phone' => $data_post['phone'],
+                'user_img' => 'default_profile.svg'
+            ];
+            $update_user = $this->users->updateData($data_update, ['id' => $data_post['id']]);
+            if ($update_user) {
+                $data = [
+                    'status' => true,
+                    'code' => 200,
+                    'icon' => 'success',
+                    'message' => 'Success update data.',
+                    'data' => null
+                ];
+            } else {
+                $data = [
+                    'status' => false,
+                    'code' => 500,
+                    'icon' => 'error',
+                    'message' => 'Gagal update data.',
+                    'data' => null
+                ];
+            }
+            echo json_encode($data);
+        } else {
+            show_404();
+        }
+    }
+
+    public function update_password()
+    {
+        if ($this->input->is_ajax_request()) {
+            $data_post = $this->input->post();
+            $data_update = [
+                'password' => md5($data_post['password']),
+            ];
+            $update_user = $this->users->updateData($data_update, ['id' => $this->session->userdata('user_id')]);
+            if ($update_user) {
+                $data = [
+                    'status' => true,
+                    'code' => 200,
+                    'icon' => 'success',
+                    'message' => 'Success update data.',
+                    'data' => null
+                ];
+            } else {
+                $data = [
+                    'status' => false,
+                    'code' => 500,
+                    'icon' => 'error',
+                    'message' => 'Gagal update data.',
+                    'data' => null
+                ];
+            }
+            echo json_encode($data);
+        } else {
+            show_404();
+        }
+    }
 }

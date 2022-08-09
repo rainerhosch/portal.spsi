@@ -166,6 +166,37 @@ class Auth extends CI_Controller
         }
     }
 
+    public function reset_password()
+    {
+        if ($this->input->is_ajax_request()) {
+            $data_post = $this->input->post();
+            $data_update = [
+                'password' => md5('user1234'),
+            ];
+            $update_user = $this->users->updateData($data_update, ['id' => $data_post['id']]);
+            if ($update_user) {
+                $data = [
+                    'status' => true,
+                    'code' => 200,
+                    'icon' => 'success',
+                    'message' => 'Success update data.',
+                    'data' => null
+                ];
+            } else {
+                $data = [
+                    'status' => false,
+                    'code' => 500,
+                    'icon' => 'error',
+                    'message' => 'Gagal update data.',
+                    'data' => null
+                ];
+            }
+            echo json_encode($data);
+        } else {
+            show_404();
+        }
+    }
+
     public function logout()
     {
 
