@@ -294,7 +294,7 @@ class Struktur_Spsi extends CI_Controller
             $table = 'struktur_org';
             $isert = $this->masterdata->insert_data($table, $data_insert);
             if ($isert) {
-                $this->generate_bagan_json_file();
+                // $this->generate_bagan_json_file();
                 $data = [
                     'status' => true,
                     'code' => 200,
@@ -363,7 +363,7 @@ class Struktur_Spsi extends CI_Controller
                     'data' => null
                 ];
             } else {
-                $this->generate_bagan_json_file();
+                // $this->generate_bagan_json_file();
                 $data = [
                     'status' => true,
                     'code' => 200,
