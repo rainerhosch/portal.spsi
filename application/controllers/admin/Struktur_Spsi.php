@@ -210,6 +210,39 @@ class Struktur_Spsi extends CI_Controller
         }
     }
 
+    public function get_bagan()
+    {
+        $data_bagan = [];
+        $struktur_org = $this->masterdata->get_data('struktur_org')->result_array();
+        foreach ($struktur_org as $i => $val) {
+            $data_jabatan[$i] = $this->masterdata->get_data('m_jabatan_org', ['id' => $val['jabatan_id']])->row_array();
+            // $data[$i]['jabatan'] = $data_jabatan[$i]['nama'];
+            $data_user[$i] = $this->users->get_data(['id' => $val['user_id']])->row_array();
+            $data_bagan[$i] = [
+                'id' => $data_jabatan[$i]['id'],
+                'text' => $data_jabatan[$i]['nama'],
+                'title' => $data_user[$i]['first_name'] . ' ' . $data_user[$i]['last_name'],
+                'width' => '350',
+                'height' => '100',
+                'dir' => 'horizontal',
+                // 'dir' => base_url('assets/data-file'),
+                'img' => base_url('assets/img/') . $data_user[$i]['user_img'],
+            ];
+        }
+        $jml_bagan = count($data_bagan);
+        foreach ($data_bagan as $j => $bagan) {
+            if ($bagan['id'] != '1') {
+                $data_bagan[$jml_bagan] = [
+                    'id' => '1-' . $bagan['id'],
+                    'from' => '1',
+                    'to' => $bagan['id'],
+                    'type' => 'line'
+                ];
+                $jml_bagan++;
+            }
+        }
+        echo json_encode($data_bagan);
+    }
     public function generate_bagan_json_file()
     {
         $data_bagan = [];

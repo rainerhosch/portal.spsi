@@ -12,6 +12,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item btnAddAnggota" href="#" id="btnAddAnggota">Tambah Data</a>
+                    <hr>
+                    <a class="dropdown-item btnExportData" href="#" id="btnExportData">Export Excel</a>
                 </div>
             </div>
         </div>
@@ -86,6 +88,9 @@
 <script src="<?= base_url('assets') ?>/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 <script>
     $(document).ready(function() {
+        $('.btnExportData').click(function() {
+            window.open('<?= base_url('admin/kelola_anggota/export_data_anggota') ?>')
+        });
         $('.btnAddAnggota').on('click', function() {
             $('#modalAddAnggota').modal('show');
             $('#form_register').submit(function(e) {

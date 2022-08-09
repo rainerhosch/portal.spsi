@@ -26,6 +26,17 @@ class M_Users extends CI_Model
         return $this->db->get();
     }
 
+    public function get_data_grup_user($condition = null)
+    {
+        $this->db->select('groups.name as user_group');
+        $this->db->from('users');
+        $this->db->join('users_groups', 'users.id=users_groups.user_id');
+        $this->db->join('groups', 'groups.id=users_groups.group_id');
+        if ($condition != null) {
+            $this->db->where($condition);
+        }
+        return $this->db->get();
+    }
     public function get_users_groups($condition = null)
     {
         $this->db->select('groups.name as user_group');

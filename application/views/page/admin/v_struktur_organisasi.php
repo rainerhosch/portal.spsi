@@ -196,7 +196,7 @@
         defaultShapeType: "img-card",
         scale: 0.9
     });
-    diagram.data.load('<?= base_url('assets/data-file') ?>/struktur_organisasi.json');
+    diagram.data.load('<?= base_url('admin') ?>/struktur_spsi/get_bagan');
 </script>
 <script>
     $(document).ready(function() {
