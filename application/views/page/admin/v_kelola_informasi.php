@@ -77,6 +77,7 @@
                     <form id="form_AddInformasi" method="POST" action="<?= base_url('admin') ?>/kelola_informasi/insert_data" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputJudul"><strong>Judul</strong></label>
+                            <input type="hidden" class="form-control" id="inputId" name="inputId"></input>
                             <input type="text" class="form-control" id="inputJudul" name="inputJudul"></input>
                         </div>
                         <div class="form-group">
@@ -121,6 +122,9 @@
 <script src="<?= base_url('assets') ?>/vendor/ckeditor/ckeditor.js"></script>
 <script>
     $(document).ready(function() {
+        CKEDITOR.replace('editor1', {
+            extraPlugins: 'imageuploader'
+        });
         setTimeout(function() {
             $('#div_alert').html('');
             <?php $this->session->unset_userdata('message'); ?>
@@ -178,6 +182,7 @@
                         success: function(response) {
                             console.log(response);
                             let data = response.data;
+                            $('input#inputId').val(data_id);
                             $('input#inputJudul').val(data.judul);
                             CKEDITOR.instances['inputIsi'].setData(data.isi);
                         }

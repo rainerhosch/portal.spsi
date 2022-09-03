@@ -40,23 +40,42 @@ class Kelola_Informasi extends CI_Controller
     }
     public function insert_data()
     {
-        $data_post = $this->input->post();
         $dateNow = date('Y-m-d');
-        $data_insert = [
-            'tgl_post' => $dateNow,
-            'judul' => $data_post['inputJudul'],
-            'isi' => $data_post['inputIsi'],
-            // 'isi' => $this->dataready($data_post['inputIsi']),
-            'gambar' => 'test.jpg',
-            'pembuat' => $this->session->userdata('user_id')
-        ];
-        $insert = $this->informasi->insert_data($data_insert);
-        if (!$insert) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Error</div>');
-            redirect('admin/kelola_informasi', 'refresh');
+        $data_post = $this->input->post();
+        if ($data_post['inputId'] != '') {
+            $data_update = [
+                'tgl_post' => $dateNow,
+                'judul' => $data_post['inputJudul'],
+                'isi' => $data_post['inputIsi'],
+                // 'isi' => $this->dataready($data_post['inputIsi']),
+                'gambar' => 'test.jpg',
+                'pembuat' => $this->session->userdata('user_id')
+            ];
+            $update = $this->informasi->update_data($data_update, ['id' => $data_post['inputId']]);
+            if (!$update) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Error</div>');
+                redirect('admin/kelola_informasi', 'refresh');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Data berhasil diperbaharui.</div>');
+                redirect('admin/kelola_informasi', 'refresh');
+            }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Berita berhasil disimpan.</div>');
-            redirect('admin/kelola_informasi', 'refresh');
+            $data_insert = [
+                'tgl_post' => $dateNow,
+                'judul' => $data_post['inputJudul'],
+                'isi' => $data_post['inputIsi'],
+                // 'isi' => $this->dataready($data_post['inputIsi']),
+                'gambar' => 'test.jpg',
+                'pembuat' => $this->session->userdata('user_id')
+            ];
+            $insert = $this->informasi->insert_data($data_insert);
+            if (!$insert) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger text-center">Error</div>');
+                redirect('admin/kelola_informasi', 'refresh');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-success text-center">Berita berhasil disimpan.</div>');
+                redirect('admin/kelola_informasi', 'refresh');
+            }
         }
     }
 
